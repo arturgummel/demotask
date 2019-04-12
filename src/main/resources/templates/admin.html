@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Admin table</title>
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-light bg-light static-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">Welcome <span th:text="${username}"></span>!</a>
+        <a class="btn btn-primary" id="logout" href="/">Log out</a>
+    </div>
+</nav>
+
+<div class="table-responsive">
+    <table class="table">
+        <caption>List of users</caption>
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">User Name</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Birthdate</th>
+            <th scope="col">Address</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="person : *{persons}">
+            <th scope="row" th:text="${person.id}"></th>
+            <th th:text="${person.username}">1</th>
+            <td th:text="${person.firstName}"></td>
+            <td th:text="${person.lastName}"></td>
+            <td th:text="${#dates.format(person.birthDate, 'yyyy-MM-dd')}"></td>
+            <td th:text="${person.address}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
